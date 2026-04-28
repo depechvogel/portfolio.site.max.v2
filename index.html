@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Max — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="home">
+  <div class="site-shell crt-on" id="shell">
+    <header class="topbar">
+      <div class="brand-group">
+        <a
+          href="https://www.tue.nl/en/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="brand-mark tue"
+        >
+          TUE
+        </a>
+
+        <a class="brand" href="index.html">
+          <div class="brand-text">
+            <span class="brand-name">Max</span>
+            <span class="brand-sub">industrial design portfolio</span>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" data-link="home">Home</a>
+        <a href="projects.html" data-link="projects">Projects</a>
+        <a href="piv.html" data-link="piv">PI&amp;V</a>
+        <a href="competence.html" data-link="competence">Competence</a>
+      </nav>
+
+      <button class="menu-toggle" aria-label="Open navigation">Menu</button>
+      <button class="crt-toggle" id="crtToggle" type="button">CRT: ON</button>
+    </header>
+
+    <main>
+      <section class="hero grid-2">
+        <div class="hero-copy">
+          <p class="eyebrow">portfolio / home</p>
+
+          <h1>
+            Max’s<br />
+            Portfolio.
+          </h1>
+
+          <p class="lead">
+            Industrial Design student focused on clear interaction,
+            physical prototyping, and turning concepts into real outcomes.
+          </p>
+
+          <div class="button-row">
+            <a class="button" href="projects.html">Open projects</a>
+            <a class="button button-secondary" href="piv.html">Read PI&amp;V</a>
+          </div>
+        </div>
+
+        <div class="window-card">
+          <div class="window-bar">
+            <span></span><span></span>
+            <p>overview.html</p>
+          </div>
+
+          <div class="window-content desktop-home">
+            <div class="mini-panel">
+              <p class="panel-label">01</p>
+              <h2>Projects</h2>
+              <p>Selected design work, concepts, prototypes, and outcomes.</p>
+            </div>
+
+            <div class="mini-panel">
+              <p class="panel-label">02</p>
+              <h2>PI&amp;V</h2>
+              <p>Who I am as a designer, what direction I am moving in, and why.</p>
+            </div>
+
+            <div class="mini-panel">
+              <p class="panel-label">03</p>
+              <h2>Competence</h2>
+              <p>Development, reflection, strengths, weaker points, and growth.</p>
+            </div>
+          </div>
+
+          <div class="window-content mobile-home">
+            <a href="projects.html" class="nav-tile">
+              <span class="panel-label">01</span>
+              <h2>Projects</h2>
+            </a>
+
+            <a href="piv.html" class="nav-tile">
+              <span class="panel-label">02</span>
+              <h2>PI&amp;V</h2>
+            </a>
+
+            <a href="competence.html" class="nav-tile">
+              <span class="panel-label">03</span>
+              <h2>Competence</h2>
+            </a>
+
+            <button class="nav-tile crt-tile" id="crtTile" type="button">
+              <span class="panel-label">04</span>
+              <h2>CRT</h2>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
