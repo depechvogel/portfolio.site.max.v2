@@ -331,7 +331,7 @@ function initPageTransitions() {
 
       window.setTimeout(() => {
         window.location.href = href;
-      }, 390);
+      }, 430);
     });
   });
 }
@@ -555,6 +555,6 @@ window.addEventListener("load", () => {
 
     window.setTimeout(() => {
       desktop.classList.remove("page-enter");
-    }, 480);
+    }, 380);
   }
 });

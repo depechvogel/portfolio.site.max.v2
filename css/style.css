@@ -855,19 +855,19 @@ code {
 }
 
 .desktop.page-leave .screen-wipe::before {
-  animation: shutterTopClose 380ms steps(12, end) both;
+  animation: shutterTopClose 320ms steps(10, end) both;
 }
 
 .desktop.page-leave .screen-wipe::after {
-  animation: shutterBottomClose 380ms steps(12, end) both;
+  animation: shutterBottomClose 320ms steps(10, end) both;
 }
 
 .desktop.page-enter .screen-wipe::before {
-  animation: shutterTopOpen 460ms steps(14, end) both;
+  animation: shutterTopOpen 360ms steps(12, end) both;
 }
 
 .desktop.page-enter .screen-wipe::after {
-  animation: shutterBottomOpen 460ms steps(14, end) both;
+  animation: shutterBottomOpen 360ms steps(12, end) both;
 }
 
 @keyframes shutterTopClose {
