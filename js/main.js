@@ -2,7 +2,6 @@ const body = document.body;
 const currentPage = body.dataset.page;
 
 const desktop = document.getElementById("desktop");
-const screenWipe = document.getElementById("screenWipe");
 const mainNav = document.getElementById("mainNav");
 const mobileMenu = document.getElementById("mobileMenu");
 const fxToggle = document.getElementById("fxToggle");
@@ -37,7 +36,6 @@ const lightboxCounter = document.getElementById("lightboxCounter");
 
 let activeProjectKey = null;
 let activeImageIndex = 0;
-let wipeTotalDuration = 900;
 
 const projectData = {
   project1: {
@@ -310,95 +308,7 @@ function initDitherToggle() {
   });
 }
 
-/* MOSAIC PIXEL PAGE TRANSITION */
-
-function buildPixelWipe() {
-  if (!screenWipe) return;
-
-  const pixelSize = window.innerWidth <= 560 ? 14 : 18;
-  const columns = Math.ceil(window.innerWidth / pixelSize);
-  const rows = Math.ceil(window.innerHeight / pixelSize);
-  const total = columns * rows;
-
-  const maxDelay = 520;
-  const coverAnimationDuration = 160;
-  const revealAnimationDuration = 180;
-  const safetyBuffer = 120;
-
-  wipeTotalDuration =
-    maxDelay + Math.max(coverAnimationDuration, revealAnimationDuration) + safetyBuffer;
-
-  screenWipe.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-  screenWipe.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-
-  screenWipe.innerHTML = "";
-
-  const maxDistance = columns + rows;
-
-  for (let index = 0; index < total; index += 1) {
-    const pixel = document.createElement("span");
-    pixel.className = "wipe-pixel";
-
-    const x = index % columns;
-    const y = Math.floor(index / columns);
-
-    const diagonalProgress = (x + y) / maxDistance;
-    const randomOffset = Math.random() * 90;
-    const delay = diagonalProgress * maxDelay + randomOffset;
-
-    pixel.style.setProperty("--delay", `${delay}ms`);
-    screenWipe.appendChild(pixel);
-  }
-}
-
-function runRevealWipe() {
-  if (!screenWipe) return;
-
-  screenWipe.classList.remove("is-covering");
-  screenWipe.classList.remove("is-covered");
-
-  /*
-    Force the wipe layer to start fully covered on the new page,
-    then reveal it by removing pixels.
-  */
-  screenWipe.classList.add("is-covered");
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      screenWipe.classList.remove("is-covered");
-      screenWipe.classList.add("is-revealing");
-
-      setTimeout(() => {
-        screenWipe.classList.remove("is-revealing");
-      }, wipeTotalDuration);
-    });
-  });
-}
-
-function runCoverWipe(callback) {
-  if (!screenWipe) {
-    callback();
-    return;
-  }
-
-  screenWipe.classList.remove("is-revealing");
-  screenWipe.classList.remove("is-covered");
-  screenWipe.classList.add("is-covering");
-
-  /*
-    Page navigation happens only after the mosaic has fully covered
-    the screen.
-  */
-  setTimeout(() => {
-    screenWipe.classList.remove("is-covering");
-    screenWipe.classList.add("is-covered");
-    callback();
-  }, wipeTotalDuration);
-}
-
 function initPageTransitions() {
-  buildPixelWipe();
-
   document.querySelectorAll("a[href]").forEach((link) => {
     const href = link.getAttribute("href");
 
@@ -410,16 +320,19 @@ function initPageTransitions() {
     if (link.hasAttribute("target")) return;
 
     link.addEventListener("click", (event) => {
+      if (!desktop) return;
+
       event.preventDefault();
 
-      runCoverWipe(() => {
-        window.location.href = href;
-      });
-    });
-  });
+      mainNav?.classList.remove("open");
 
-  window.addEventListener("resize", () => {
-    buildPixelWipe();
+      desktop.classList.remove("page-enter");
+      desktop.classList.add("page-leave");
+
+      window.setTimeout(() => {
+        window.location.href = href;
+      }, 390);
+    });
   });
 }
 
@@ -591,9 +504,7 @@ function updateLightboxImage() {
 function initProjectModal() {
   if (!projectOverlay) return;
 
-  if (projectClose) {
-    projectClose.addEventListener("click", closeProject);
-  }
+  projectClose.addEventListener("click", closeProject);
 
   projectOverlay.addEventListener("click", (event) => {
     if (event.target === projectOverlay) {
@@ -601,21 +512,11 @@ function initProjectModal() {
     }
   });
 
-  if (projectMainImage) {
-    projectMainImage.addEventListener("click", openLightbox);
-  }
+  projectMainImage.addEventListener("click", openLightbox);
 
-  if (lightboxBack) {
-    lightboxBack.addEventListener("click", closeLightbox);
-  }
-
-  if (lightboxPrev) {
-    lightboxPrev.addEventListener("click", () => changeImage(-1));
-  }
-
-  if (lightboxNext) {
-    lightboxNext.addEventListener("click", () => changeImage(1));
-  }
+  lightboxBack.addEventListener("click", closeLightbox);
+  lightboxPrev.addEventListener("click", () => changeImage(-1));
+  lightboxNext.addEventListener("click", () => changeImage(1));
 }
 
 document.addEventListener("keydown", (event) => {
@@ -649,5 +550,11 @@ window.addEventListener("load", () => {
   renderProjectsGrid();
   initProjectModal();
 
-  runRevealWipe();
+  if (desktop) {
+    desktop.classList.add("page-enter");
+
+    window.setTimeout(() => {
+      desktop.classList.remove("page-enter");
+    }, 480);
+  }
 });
