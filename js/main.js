@@ -37,6 +37,7 @@ const lightboxCounter = document.getElementById("lightboxCounter");
 
 let activeProjectKey = null;
 let activeImageIndex = 0;
+let wipeTotalDuration = 900;
 
 const projectData = {
   project1: {
@@ -301,7 +302,7 @@ function initDitherToggle() {
     setDitherState(true);
   }
 
-  if (!fxToggle) return;
+  if (!fxToggle || !desktop) return;
 
   fxToggle.addEventListener("click", () => {
     const nextState = !desktop.classList.contains("dither-on");
@@ -309,18 +310,30 @@ function initDitherToggle() {
   });
 }
 
+/* MOSAIC PIXEL PAGE TRANSITION */
+
 function buildPixelWipe() {
   if (!screenWipe) return;
 
-  const pixelSize = window.innerWidth <= 560 ? 18 : 24;
+  const pixelSize = window.innerWidth <= 560 ? 14 : 18;
   const columns = Math.ceil(window.innerWidth / pixelSize);
   const rows = Math.ceil(window.innerHeight / pixelSize);
   const total = columns * rows;
+
+  const maxDelay = 520;
+  const coverAnimationDuration = 160;
+  const revealAnimationDuration = 180;
+  const safetyBuffer = 120;
+
+  wipeTotalDuration =
+    maxDelay + Math.max(coverAnimationDuration, revealAnimationDuration) + safetyBuffer;
 
   screenWipe.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
   screenWipe.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
 
   screenWipe.innerHTML = "";
+
+  const maxDistance = columns + rows;
 
   for (let index = 0; index < total; index += 1) {
     const pixel = document.createElement("span");
@@ -329,9 +342,9 @@ function buildPixelWipe() {
     const x = index % columns;
     const y = Math.floor(index / columns);
 
-    const distanceFromTopLeft = x + y;
+    const diagonalProgress = (x + y) / maxDistance;
     const randomOffset = Math.random() * 90;
-    const delay = distanceFromTopLeft * 8 + randomOffset;
+    const delay = diagonalProgress * maxDelay + randomOffset;
 
     pixel.style.setProperty("--delay", `${delay}ms`);
     screenWipe.appendChild(pixel);
@@ -342,11 +355,24 @@ function runRevealWipe() {
   if (!screenWipe) return;
 
   screenWipe.classList.remove("is-covering");
-  screenWipe.classList.add("is-revealing");
+  screenWipe.classList.remove("is-covered");
 
-  setTimeout(() => {
-    screenWipe.classList.remove("is-revealing");
-  }, 900);
+  /*
+    Force the wipe layer to start fully covered on the new page,
+    then reveal it by removing pixels.
+  */
+  screenWipe.classList.add("is-covered");
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      screenWipe.classList.remove("is-covered");
+      screenWipe.classList.add("is-revealing");
+
+      setTimeout(() => {
+        screenWipe.classList.remove("is-revealing");
+      }, wipeTotalDuration);
+    });
+  });
 }
 
 function runCoverWipe(callback) {
@@ -356,9 +382,18 @@ function runCoverWipe(callback) {
   }
 
   screenWipe.classList.remove("is-revealing");
+  screenWipe.classList.remove("is-covered");
   screenWipe.classList.add("is-covering");
 
-  setTimeout(callback, 850);
+  /*
+    Page navigation happens only after the mosaic has fully covered
+    the screen.
+  */
+  setTimeout(() => {
+    screenWipe.classList.remove("is-covering");
+    screenWipe.classList.add("is-covered");
+    callback();
+  }, wipeTotalDuration);
 }
 
 function initPageTransitions() {
@@ -556,7 +591,9 @@ function updateLightboxImage() {
 function initProjectModal() {
   if (!projectOverlay) return;
 
-  projectClose.addEventListener("click", closeProject);
+  if (projectClose) {
+    projectClose.addEventListener("click", closeProject);
+  }
 
   projectOverlay.addEventListener("click", (event) => {
     if (event.target === projectOverlay) {
@@ -564,11 +601,21 @@ function initProjectModal() {
     }
   });
 
-  projectMainImage.addEventListener("click", openLightbox);
+  if (projectMainImage) {
+    projectMainImage.addEventListener("click", openLightbox);
+  }
 
-  lightboxBack.addEventListener("click", closeLightbox);
-  lightboxPrev.addEventListener("click", () => changeImage(-1));
-  lightboxNext.addEventListener("click", () => changeImage(1));
+  if (lightboxBack) {
+    lightboxBack.addEventListener("click", closeLightbox);
+  }
+
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener("click", () => changeImage(-1));
+  }
+
+  if (lightboxNext) {
+    lightboxNext.addEventListener("click", () => changeImage(1));
+  }
 }
 
 document.addEventListener("keydown", (event) => {
