@@ -1,341 +1,486 @@
 const body = document.body;
 const currentPage = body.dataset.page;
-const navLinks = document.querySelectorAll(".nav a");
-const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav");
-const crtToggle = document.getElementById("crtToggle");
-const shell = document.getElementById("shell");
-const crtTile = document.getElementById("crtTile");
+
+const desktop = document.getElementById("desktop");
+const screenWipe = document.getElementById("screenWipe");
+const mainNav = document.getElementById("mainNav");
+const mobileMenu = document.getElementById("mobileMenu");
+const fxToggle = document.getElementById("fxToggle");
+
+const navLinks = document.querySelectorAll(".main-nav a");
+const projectsGrid = document.getElementById("projectsGrid");
 
 const projectOverlay = document.getElementById("projectOverlay");
 const projectClose = document.getElementById("projectClose");
-const projectOpenButtons = document.querySelectorAll(".project-open");
-
 const projectModalFile = document.getElementById("projectModalFile");
 const projectModalCategory = document.getElementById("projectModalCategory");
 const projectModalTitle = document.getElementById("projectModalTitle");
 const projectModalLead = document.getElementById("projectModalLead");
-const projectModalTags = document.getElementById("projectModalTags");
 const projectModalOverview = document.getElementById("projectModalOverview");
 const projectModalProcess = document.getElementById("projectModalProcess");
 const projectModalOutcome = document.getElementById("projectModalOutcome");
+const projectModalTags = document.getElementById("projectModalTags");
 
-const projectModalThumb = document.getElementById("projectModalThumb");
+const projectModalBody = document.getElementById("projectModalBody");
+const projectMainImage = document.getElementById("projectMainImage");
+const projectMainImageTag = document.getElementById("projectMainImageTag");
+const projectImageCounter = document.getElementById("projectImageCounter");
+const projectImageCaption = document.getElementById("projectImageCaption");
 const projectGalleryStrip = document.getElementById("projectGalleryStrip");
-const projectModalScroll = document.getElementById("projectModalScroll");
 
-const projectLightbox = document.getElementById("projectLightbox");
+const lightbox = document.getElementById("lightbox");
 const lightboxBack = document.getElementById("lightboxBack");
 const lightboxPrev = document.getElementById("lightboxPrev");
 const lightboxNext = document.getElementById("lightboxNext");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxCounter = document.getElementById("lightboxCounter");
-const projectLightboxThumbs = document.getElementById("projectLightboxThumbs");
-const projectImageCounter = document.getElementById("projectImageCounter");
-const projectImageCaption = document.getElementById("projectImageCaption");
 
 let activeProjectKey = null;
 let activeImageIndex = 0;
 
 const projectData = {
   project1: {
-    file: "project-01.html",
+    file: "project_01.txt",
     category: "interactive object",
     title: "Project 01",
-    lead: "Project summary text.",
-    tags: ["prototype"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["prototype", "interaction", "design"],
     images: [
-      { src: "assets/images/project1/project1-1.jpeg", caption: "je moeder" },
-      { src: "assets/images/project1/WhatsApp Image 2025-04-15 at 18.20.20.jpeg333.jpeg", caption: "" },
-      { src: "assets/images/project1/WhatsApp Image 2025-04-15 at 18.20.20.jpeg33.jpeg", caption: "" },
-      { src: "assets/images/project1/WhatsApp Image 2025-04-15 at 18.20.20.jpeg", caption: "" },
-      { src: "assets/images/project1/Screenshot 2025-05-13 at 21-00-34 gSfWNPnqA36602xQvoQu0[...].png", caption: "" },
-      { src: "assets/images/project1/Screenshot 2025-05-13 at 20-56-48 ZTdyoTqHbFclR3fMryXib[...].png", caption: "" },
-      { src: "assets/images/project1/project1-1.jpeg", caption: "" }
+      { src: "assets/images/project1/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project1/01.jpg", caption: "context frame" },
+      { src: "assets/images/project1/02.jpg", caption: "process frame" },
+      { src: "assets/images/project1/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project2: {
-    file: "project-02.html",
-    category: "design research",
+    file: "project_02.txt",
+    category: "service design",
     title: "Project 02",
-    lead: "Project summary text.",
-    tags: ["research"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["research", "system", "concept"],
     images: [
-      { src: "assets/images/project2/WhatsApp Image 2024-12-06 at 16.18.19.jpeg", caption: "" },
-      { src: "assets/images/project2/23452345234.jpg", caption: "" },
-      { src: "assets/images/project2/WhatsApp Image 2025-01-13 at 14.19.40.jpeg", caption: "" },
-      { src: "assets/images/project2/Pict23323ure2.jpg", caption: "" },
-      { src: "assets/images/project2/Picture143.png", caption: "" },
-      { src: "assets/images/project2/WhatsApp Image 2024-09-25 at 16.26.58.jpeg", caption: "" },
-      { src: "assets/images/project2/WhatsApp Image 2024-09-25 at 16.26.59.jpeg", caption: "" },
-      { src: "assets/images/project2/WhatsApp Image 2024-09-30 at 12.25.50.jpeg", caption: "" }
+      { src: "assets/images/project2/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project2/01.jpg", caption: "context frame" },
+      { src: "assets/images/project2/02.jpg", caption: "process frame" },
+      { src: "assets/images/project2/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project3: {
-    file: "project-03.html",
-    category: "concept",
+    file: "project_03.txt",
+    category: "speculative design",
     title: "Project 03",
-    lead: "Project summary text.",
-    tags: ["concept"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["future", "critical", "vision"],
     images: [
-      { src: "assets/images/project3/Challenge_4_variations_page-0001.jpg", caption: "" }
+      { src: "assets/images/project3/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project3/01.jpg", caption: "context frame" },
+      { src: "assets/images/project3/02.jpg", caption: "process frame" },
+      { src: "assets/images/project3/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project4: {
-    file: "project-04.html",
-    category: "prototype",
+    file: "project_04.txt",
+    category: "user research",
     title: "Project 04",
-    lead: "Project summary text.",
-    tags: ["prototype"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["insight", "testing", "analysis"],
     images: [
-      { src: "assets/images/project4/Screenshot 2025-04-15 181747.png", caption: "" }
+      { src: "assets/images/project4/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project4/01.jpg", caption: "context frame" },
+      { src: "assets/images/project4/02.jpg", caption: "process frame" },
+      { src: "assets/images/project4/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project5: {
-    file: "project-05.html",
-    category: "product",
+    file: "project_05.txt",
+    category: "physical computing",
     title: "Project 05",
-    lead: "Project summary text.",
-    tags: ["product"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["electronics", "making", "prototype"],
     images: [
-      { src: "assets/images/project5/WhatsApp Image 2025-12-12 at 17.38.31(1).jpeg", caption: "" },
-      { src: "assets/images/project5/WhatsApp Image 2025-12-12 at 17.38.31.jpeg", caption: "" },
-      { src: "assets/images/project5/WhatsApp Image 2025-12-12 at 17.38.33.jpeg", caption: "" },
-      { src: "assets/images/project5/WhatsApp Image 2025-12-12 at 17.38.32(2).jpeg", caption: "" },
-      { src: "assets/images/project5/WhatsApp Image 2025-12-12 at 17.38.31(2).jpeg", caption: "" },
-      { src: "assets/images/project5/export202512022227589470(1).png", caption: "" },
-      { src: "assets/images/project5/WhatsApp Image 2026-03-09 at 17.11.32.jpeg", caption: "" },
-      { src: "assets/images/project5/WhatsApp Image 2026-03-09 at 17.11.33.jpeg", caption: "" },
-      { src: "assets/images/project5/WhatsApp Image 2026-03-09 at 17.09.20(1).jpeg", caption: "" },
-      { src: "assets/images/project5/WhatsApp Image 2026-03-09 at 17.09.20.jpeg", caption: "" }
+      { src: "assets/images/project5/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project5/01.jpg", caption: "context frame" },
+      { src: "assets/images/project5/02.jpg", caption: "process frame" },
+      { src: "assets/images/project5/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project6: {
-    file: "project-06.html",
-    category: "system",
+    file: "project_06.txt",
+    category: "visual identity",
     title: "Project 06",
-    lead: "Project summary text.",
-    tags: ["system"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["visual", "identity", "communication"],
     images: [
-      { src: "assets/images/project6/WhatsApp Image 2025-10-30 at 16.32.05.jpeg", caption: "" },
-      { src: "assets/images/project6/WhatsApp Image 2025-10-30 at 16.32.06(1).jpeg", caption: "" },
-      { src: "assets/images/project6/WhatsApp Image 2025-10-30 at 16.32.06(2).jpeg", caption: "" },
-      { src: "assets/images/project6/WhatsApp Image 2025-10-30 at 16.32.07(1).jpeg", caption: "" },
-      { src: "assets/images/project6/WhatsApp Image 2025-10-30 at 16.32.07(2).jpeg", caption: "" },
-      { src: "assets/images/project6/WhatsApp Image 2025-10-30 at 16.32.07(3).jpeg", caption: "" },
-      { src: "assets/images/project6/WhatsApp Image 2025-10-31 at 13.35.42(2).jpeg", caption: "" },
-      { src: "assets/images/project6/WhatsApp Image 2025-10-31 at 14.23.14.jpeg", caption: "" }
+      { src: "assets/images/project6/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project6/01.jpg", caption: "context frame" },
+      { src: "assets/images/project6/02.jpg", caption: "process frame" },
+      { src: "assets/images/project6/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project7: {
-    file: "project-07.html",
-    category: "interface",
+    file: "project_07.txt",
+    category: "experience design",
     title: "Project 07",
-    lead: "Project summary text.",
-    tags: ["interface"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["experience", "interface", "testing"],
     images: [
-      { src: "assets/images/project7/image24.jpeg", caption: "" },
-      { src: "assets/images/project7/image19.jpeg", caption: "" },
-      { src: "assets/images/project7/image20.jpeg", caption: "" },
-      { src: "assets/images/project7/image21.png", caption: "" },
-      { src: "assets/images/project7/image22.png", caption: "" },
-      { src: "assets/images/project7/image23.png", caption: "" }
+      { src: "assets/images/project7/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project7/01.jpg", caption: "context frame" },
+      { src: "assets/images/project7/02.jpg", caption: "process frame" },
+      { src: "assets/images/project7/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project8: {
-    file: "project-08.html",
-    category: "research",
+    file: "project_08.txt",
+    category: "material study",
     title: "Project 08",
-    lead: "Project summary text.",
-    tags: ["research"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["material", "experiment", "craft"],
     images: [
-      { src: "assets/images/project8/export202603181418053130.png", caption: "" },
-      { src: "assets/images/project8/export202603191705555080.png", caption: "" }
+      { src: "assets/images/project8/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project8/01.jpg", caption: "context frame" },
+      { src: "assets/images/project8/02.jpg", caption: "process frame" },
+      { src: "assets/images/project8/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project9: {
-    file: "project-09.html",
-    category: "installation",
+    file: "project_09.txt",
+    category: "system design",
     title: "Project 09",
-    lead: "Project summary text.",
-    tags: ["installation"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["system", "strategy", "mapping"],
     images: [
-      { src: "assets/images/project9/project9-1.jpeg", caption: "" }
+      { src: "assets/images/project9/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project9/01.jpg", caption: "context frame" },
+      { src: "assets/images/project9/02.jpg", caption: "process frame" },
+      { src: "assets/images/project9/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project10: {
-    file: "project-10.html",
-    category: "experiment",
+    file: "project_10.txt",
+    category: "product concept",
     title: "Project 10",
-    lead: "Project summary text.",
-    tags: ["experiment"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["product", "form", "prototype"],
     images: [
-      { src: "assets/images/project10/project10-1.jpeg", caption: "" }
+      { src: "assets/images/project10/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project10/01.jpg", caption: "context frame" },
+      { src: "assets/images/project10/02.jpg", caption: "process frame" },
+      { src: "assets/images/project10/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project11: {
-    file: "project-11.html",
-    category: "service",
+    file: "project_11.txt",
+    category: "social design",
     title: "Project 11",
-    lead: "Project summary text.",
-    tags: ["service"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["people", "society", "research"],
     images: [
-      { src: "assets/images/project11/project11-1.jpeg", caption: "" }
+      { src: "assets/images/project11/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project11/01.jpg", caption: "context frame" },
+      { src: "assets/images/project11/02.jpg", caption: "process frame" },
+      { src: "assets/images/project11/03.jpg", caption: "outcome frame" }
     ]
   },
 
   project12: {
-    file: "project-12.html",
-    category: "material study",
+    file: "project_12.txt",
+    category: "self-directed",
     title: "Project 12",
-    lead: "Project summary text.",
-    tags: ["material"],
-    overview: "Overview text.",
-    process: "Process text.",
-    outcome: "Outcome text.",
+    summary: "Short archive note. State what this project is.",
+    lead: "Project note. Add context, role, and design intention here.",
+    overview: "Overview entry. Describe the assignment, context, and central design question.",
+    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
+    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
+    tags: ["personal", "experiment", "design"],
     images: [
-      { src: "assets/images/project12/project12-1.jpeg", caption: "" }
+      { src: "assets/images/project12/cover.jpg", caption: "cover frame" },
+      { src: "assets/images/project12/01.jpg", caption: "context frame" },
+      { src: "assets/images/project12/02.jpg", caption: "process frame" },
+      { src: "assets/images/project12/03.jpg", caption: "outcome frame" }
     ]
   }
 };
 
-/* active nav */
-navLinks.forEach((link) => {
-  if (link.dataset.link === currentPage) {
-    link.classList.add("active");
+function getImageSrc(image) {
+  return typeof image === "string" ? image : image.src;
+}
+
+function getImageCaption(image) {
+  return typeof image === "string" ? "" : image.caption || "";
+}
+
+function setActiveNavigation() {
+  navLinks.forEach((link) => {
+    if (link.dataset.link === currentPage) {
+      link.classList.add("active");
+    }
+  });
+}
+
+function initMobileMenu() {
+  if (!mobileMenu || !mainNav) return;
+
+  mobileMenu.addEventListener("click", () => {
+    mainNav.classList.toggle("open");
+  });
+}
+
+function setDitherState(isOn) {
+  if (!desktop) return;
+
+  desktop.classList.toggle("dither-on", isOn);
+
+  if (fxToggle) {
+    fxToggle.textContent = `DITHER: ${isOn ? "ON" : "OFF"}`;
   }
-});
 
-/* mobile menu */
-if (menuToggle && nav) {
-  menuToggle.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+  localStorage.setItem("dither-mode", isOn ? "on" : "off");
 }
 
-/* CRT tile */
-if (crtTile && shell) {
-  crtTile.addEventListener("click", () => {
-    shell.classList.toggle("crt-on");
-    const isOn = shell.classList.contains("crt-on");
-    localStorage.setItem("crt-mode", isOn ? "on" : "off");
-  });
-}
+function initDitherToggle() {
+  const saved = localStorage.getItem("dither-mode");
 
-/* CRT toggle */
-if (crtToggle && shell) {
-  const savedCRT = localStorage.getItem("crt-mode");
-
-  if (savedCRT === "off") {
-    shell.classList.remove("crt-on");
-    crtToggle.textContent = "CRT: OFF";
+  if (saved === "off") {
+    setDitherState(false);
   } else {
-    shell.classList.add("crt-on");
-    crtToggle.textContent = "CRT: ON";
+    setDitherState(true);
   }
 
-  crtToggle.addEventListener("click", () => {
-    shell.classList.toggle("crt-on");
-    const isOn = shell.classList.contains("crt-on");
-    crtToggle.textContent = isOn ? "CRT: ON" : "CRT: OFF";
-    localStorage.setItem("crt-mode", isOn ? "on" : "off");
+  if (!fxToggle) return;
+
+  fxToggle.addEventListener("click", () => {
+    const nextState = !desktop.classList.contains("dither-on");
+    setDitherState(nextState);
   });
 }
 
-/* page enter */
-window.addEventListener("load", () => {
-  if (shell && shell.classList.contains("crt-on")) {
-    shell.classList.add("page-enter");
-    setTimeout(() => {
-      shell.classList.remove("page-enter");
-    }, 700);
+function buildPixelWipe() {
+  if (!screenWipe) return;
+
+  const pixelSize = window.innerWidth <= 560 ? 18 : 24;
+  const columns = Math.ceil(window.innerWidth / pixelSize);
+  const rows = Math.ceil(window.innerHeight / pixelSize);
+  const total = columns * rows;
+
+  screenWipe.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+  screenWipe.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+
+  screenWipe.innerHTML = "";
+
+  for (let index = 0; index < total; index += 1) {
+    const pixel = document.createElement("span");
+    pixel.className = "wipe-pixel";
+
+    const x = index % columns;
+    const y = Math.floor(index / columns);
+
+    const distanceFromTopLeft = x + y;
+    const randomOffset = Math.random() * 90;
+    const delay = distanceFromTopLeft * 8 + randomOffset;
+
+    pixel.style.setProperty("--delay", `${delay}ms`);
+    screenWipe.appendChild(pixel);
   }
-
-  renderProjectThumbnails();
-});
-
-/* thumbnails */
-function renderProjectThumbnails() {
-  const thumbs = document.querySelectorAll(".project-thumb");
-
-  thumbs.forEach((thumb) => {
-    const key = thumb.dataset.project;
-    const project = projectData[key];
-
-    if (!project || !project.images || project.images.length === 0) return;
-
-    const firstImage = project.images[0];
-const firstSrc = typeof firstImage === "string" ? firstImage : firstImage.src;
-
-thumb.innerHTML = `<img src="${firstSrc}" alt="${project.title} preview">`;
-  });
 }
 
-/* render gallery */
-function renderGallery(images) {
-  if (!images || images.length === 0) {
-    if (projectModalThumb) projectModalThumb.innerHTML = "";
-    if (projectGalleryStrip) projectGalleryStrip.innerHTML = "";
+function runRevealWipe() {
+  if (!screenWipe) return;
+
+  screenWipe.classList.remove("is-covering");
+  screenWipe.classList.add("is-revealing");
+
+  setTimeout(() => {
+    screenWipe.classList.remove("is-revealing");
+  }, 900);
+}
+
+function runCoverWipe(callback) {
+  if (!screenWipe) {
+    callback();
     return;
   }
 
-  activeImageIndex = 0;
-  updateProjectImage();
+  screenWipe.classList.remove("is-revealing");
+  screenWipe.classList.add("is-covering");
 
-  projectGalleryStrip.innerHTML = images
-    .map(
-      (src, index) => `
-        <button class="project-gallery-thumb ${index === 0 ? "active" : ""}" type="button" data-image-index="${index}">
-          <img src="${typeof src === "string" ? src : src.src}" alt="Project image ${index + 1}">
-        </button>
-      `
-    )
+  setTimeout(callback, 850);
+}
+
+function initPageTransitions() {
+  buildPixelWipe();
+
+  document.querySelectorAll("a[href]").forEach((link) => {
+    const href = link.getAttribute("href");
+
+    if (!href) return;
+    if (href.startsWith("#")) return;
+    if (href.startsWith("http")) return;
+    if (href.startsWith("mailto:")) return;
+    if (href.startsWith("tel:")) return;
+    if (link.hasAttribute("target")) return;
+
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      runCoverWipe(() => {
+        window.location.href = href;
+      });
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    buildPixelWipe();
+  });
+}
+
+function renderProjectsGrid() {
+  if (!projectsGrid) return;
+
+  const projectEntries = Object.entries(projectData);
+
+  projectsGrid.innerHTML = projectEntries
+    .map(([key, project], index) => {
+      const number = String(index + 1).padStart(2, "0");
+      const cover = getImageSrc(project.images[0]);
+
+      return `
+        <article class="project-card">
+          <div class="project-card-bar">
+            <span>card_${number}</span>
+            <span>${project.category}</span>
+          </div>
+
+          <button class="project-thumb-button" type="button" data-project="${key}">
+            <img src="${cover}" alt="${project.title} preview">
+          </button>
+
+          <div class="project-card-body">
+            <h2>${project.title}</h2>
+            <p>${project.summary}</p>
+
+            <button type="button" data-project="${key}">
+              Open file
+            </button>
+          </div>
+        </article>
+      `;
+    })
     .join("");
 
-  projectGalleryStrip.querySelectorAll(".project-gallery-thumb").forEach((button) => {
+  projectsGrid.querySelectorAll("[data-project]").forEach((button) => {
+    button.addEventListener("click", () => {
+      openProject(button.dataset.project);
+    });
+  });
+}
+
+function openProject(projectKey) {
+  const project = projectData[projectKey];
+
+  if (!project || !projectOverlay) return;
+
+  activeProjectKey = projectKey;
+  activeImageIndex = 0;
+
+  projectModalFile.textContent = project.file;
+  projectModalCategory.textContent = project.category;
+  projectModalTitle.textContent = project.title;
+  projectModalLead.textContent = project.lead;
+  projectModalOverview.textContent = project.overview;
+  projectModalProcess.textContent = project.process;
+  projectModalOutcome.textContent = project.outcome;
+
+  projectModalTags.innerHTML = project.tags
+    .map((tag) => `<span>${tag}</span>`)
+    .join("");
+
+  renderGallery();
+  updateProjectImage();
+  closeLightbox();
+
+  projectOverlay.classList.add("open");
+  projectOverlay.setAttribute("aria-hidden", "false");
+}
+
+function closeProject() {
+  if (!projectOverlay) return;
+
+  projectOverlay.classList.remove("open");
+  projectOverlay.setAttribute("aria-hidden", "true");
+  closeLightbox();
+}
+
+function renderGallery() {
+  const project = projectData[activeProjectKey];
+
+  if (!project || !projectGalleryStrip) return;
+
+  projectGalleryStrip.innerHTML = project.images
+    .map((image, index) => {
+      return `
+        <button class="gallery-thumb" type="button" data-image-index="${index}">
+          <img src="${getImageSrc(image)}" alt="Project image ${index + 1}">
+        </button>
+      `;
+    })
+    .join("");
+
+  projectGalleryStrip.querySelectorAll(".gallery-thumb").forEach((button) => {
     button.addEventListener("click", () => {
       activeImageIndex = Number(button.dataset.imageIndex);
       updateProjectImage();
@@ -345,222 +490,117 @@ function renderGallery(images) {
 
 function updateProjectImage() {
   const project = projectData[activeProjectKey];
-  if (!project || !project.images || project.images.length === 0) return;
 
-  const currentImage = project.images[activeImageIndex];
+  if (!project || !projectMainImageTag) return;
 
-  const currentSrc =
-    typeof currentImage === "string" ? currentImage : currentImage.src;
+  const image = project.images[activeImageIndex];
+  const imageSrc = getImageSrc(image);
+  const caption = getImageCaption(image);
 
-  const currentCaption =
-    typeof currentImage === "string" ? "" : currentImage.caption || "";
+  projectMainImageTag.src = imageSrc;
+  projectMainImageTag.alt = `${project.title} image ${activeImageIndex + 1}`;
 
-  if (projectModalThumb) {
-    projectModalThumb.innerHTML = `<img src="${currentSrc}" alt="Project image ${activeImageIndex + 1}">`;
-  }
+  projectImageCounter.textContent =
+    `${String(activeImageIndex + 1).padStart(2, "0")} / ${String(project.images.length).padStart(2, "0")}`;
 
-  if (projectImageCounter) {
-    projectImageCounter.textContent =
-      `${String(activeImageIndex + 1).padStart(2, "0")} / ${String(project.images.length).padStart(2, "0")}`;
-  }
+  projectImageCaption.textContent = caption;
 
-  if (projectImageCaption) {
-    projectImageCaption.textContent = currentCaption;
-  }
-
-  if (projectGalleryStrip) {
-    projectGalleryStrip.querySelectorAll(".project-gallery-thumb").forEach((thumb, index) => {
-      thumb.classList.toggle("active", index === activeImageIndex);
-    });
-  }
-}
-
-function updateLightbox() {
-  const project = projectData[activeProjectKey];
-  if (!project || !project.images || project.images.length === 0) return;
-
-  const currentImage = project.images[activeImageIndex];
-const currentSrc = typeof currentImage === "string" ? currentImage : currentImage.src;
-
-lightboxImage.src = currentSrc;
-  lightboxCounter.textContent = `${activeImageIndex + 1} / ${project.images.length}`;
-
-  projectLightboxThumbs.querySelectorAll(".lightbox-thumb").forEach((thumb, index) => {
+  projectGalleryStrip.querySelectorAll(".gallery-thumb").forEach((thumb, index) => {
     thumb.classList.toggle("active", index === activeImageIndex);
   });
+
+  updateLightboxImage();
+}
+
+function changeImage(direction) {
+  const project = projectData[activeProjectKey];
+
+  if (!project) return;
+
+  activeImageIndex =
+    (activeImageIndex + direction + project.images.length) % project.images.length;
+
+  updateProjectImage();
 }
 
 function openLightbox() {
-  const project = projectData[activeProjectKey];
-  if (!project || !project.images || project.images.length === 0) return;
+  if (!lightbox || !projectModalBody) return;
 
-  projectModalScroll.style.display = "none";
-  projectLightbox.classList.add("open");
-  projectLightbox.setAttribute("aria-hidden", "false");
-  updateLightbox();
+  projectModalBody.classList.add("hidden");
+  lightbox.classList.add("open");
+  lightbox.setAttribute("aria-hidden", "false");
+
+  updateLightboxImage();
 }
 
 function closeLightbox() {
-  if (!projectLightbox || !projectModalScroll) return;
-  projectLightbox.classList.remove("open");
-  projectLightbox.setAttribute("aria-hidden", "true");
-  projectModalScroll.style.display = "block";
+  if (!lightbox || !projectModalBody) return;
+
+  lightbox.classList.remove("open");
+  lightbox.setAttribute("aria-hidden", "true");
+  projectModalBody.classList.remove("hidden");
 }
 
-/* modal */
-function openProject(projectKey) {
+function updateLightboxImage() {
+  const project = projectData[activeProjectKey];
+
+  if (!project || !lightboxImage || !lightboxCounter) return;
+
+  const image = project.images[activeImageIndex];
+
+  lightboxImage.src = getImageSrc(image);
+  lightboxImage.alt = `${project.title} enlarged image ${activeImageIndex + 1}`;
+  lightboxCounter.textContent = `${activeImageIndex + 1} / ${project.images.length}`;
+}
+
+function initProjectModal() {
   if (!projectOverlay) return;
 
-  const project = projectData[projectKey];
-  if (!project) return;
-
-  activeProjectKey = projectKey;
-  activeImageIndex = 0;
-
-  if (projectModalFile) projectModalFile.textContent = project.file;
-  if (projectModalCategory) projectModalCategory.textContent = project.category;
-  if (projectModalTitle) projectModalTitle.textContent = project.title;
-  if (projectModalLead) projectModalLead.textContent = project.lead;
-  if (projectModalOverview) projectModalOverview.textContent = project.overview;
-
-  if (projectModalProcess) {
-    projectModalProcess.textContent = project.process || "";
-  }
-
-  if (projectModalOutcome) {
-    projectModalOutcome.textContent = project.outcome || "";
-  }
-
-  if (projectModalTags) {
-    projectModalTags.innerHTML = project.tags
-      .map((tag) => `<span class="project-tag">${tag}</span>`)
-      .join("");
-  }
-
-  renderGallery(project.images);
-  closeLightbox();
-
-  projectOverlay.classList.add("open");
-  projectOverlay.setAttribute("aria-hidden", "false");
-
-  if (shell) {
-    shell.classList.add("modal-open");
-  }
-}
-
-function closeProject() {
-  if (!projectOverlay) return;
-  projectOverlay.classList.remove("open");
-  projectOverlay.setAttribute("aria-hidden", "true");
-  shell.classList.remove("modal-open");
-  closeLightbox();
-}
-
-projectOpenButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    openProject(button.dataset.project);
-  });
-});
-
-if (projectModalThumb) {
-  projectModalThumb.addEventListener("click", () => {
-    const project = projectData[activeProjectKey];
-    if (!project || !project.images || project.images.length === 0) return;
-
-    activeImageIndex = (activeImageIndex + 1) % project.images.length;
-    updateProjectImage();
-  });
-}
-
-if (lightboxBack) {
-  lightboxBack.addEventListener("click", closeLightbox);
-}
-
-if (lightboxPrev) {
-  lightboxPrev.addEventListener("click", () => {
-    const project = projectData[activeProjectKey];
-    if (!project || !project.images) return;
-
-    activeImageIndex =
-      (activeImageIndex - 1 + project.images.length) % project.images.length;
-
-    updateLightbox();
-  });
-}
-
-if (lightboxNext) {
-  lightboxNext.addEventListener("click", () => {
-    const project = projectData[activeProjectKey];
-    if (!project || !project.images) return;
-
-    activeImageIndex =
-      (activeImageIndex + 1) % project.images.length;
-
-    updateLightbox();
-  });
-}
-
-if (projectClose) {
   projectClose.addEventListener("click", closeProject);
-}
 
-if (projectOverlay) {
-  projectOverlay.addEventListener("click", (e) => {
-    if (e.target === projectOverlay) {
+  projectOverlay.addEventListener("click", (event) => {
+    if (event.target === projectOverlay) {
       closeProject();
     }
   });
+
+  projectMainImage.addEventListener("click", openLightbox);
+
+  lightboxBack.addEventListener("click", closeLightbox);
+  lightboxPrev.addEventListener("click", () => changeImage(-1));
+  lightboxNext.addEventListener("click", () => changeImage(1));
 }
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    if (projectLightbox && projectLightbox.classList.contains("open")) {
+document.addEventListener("keydown", (event) => {
+  const modalOpen = projectOverlay && projectOverlay.classList.contains("open");
+  const lightboxOpen = lightbox && lightbox.classList.contains("open");
+
+  if (!modalOpen) return;
+
+  if (event.key === "Escape") {
+    if (lightboxOpen) {
       closeLightbox();
     } else {
       closeProject();
     }
   }
 
-  if (projectLightbox && projectLightbox.classList.contains("open")) {
-    const project = projectData[activeProjectKey];
-    if (!project || !project.images) return;
+  if (event.key === "ArrowLeft") {
+    changeImage(-1);
+  }
 
-    if (e.key === "ArrowLeft") {
-      activeImageIndex =
-        (activeImageIndex - 1 + project.images.length) % project.images.length;
-      updateLightbox();
-    }
-
-    if (e.key === "ArrowRight") {
-      activeImageIndex =
-        (activeImageIndex + 1) % project.images.length;
-      updateLightbox();
-    }
+  if (event.key === "ArrowRight") {
+    changeImage(1);
   }
 });
 
-/* page leave */
-document.querySelectorAll('a[href]').forEach((link) => {
-  const href = link.getAttribute("href");
-  if (!href) return;
+window.addEventListener("load", () => {
+  setActiveNavigation();
+  initMobileMenu();
+  initDitherToggle();
+  initPageTransitions();
+  renderProjectsGrid();
+  initProjectModal();
 
-  const isInternal =
-    !href.startsWith("http") &&
-    !href.startsWith("mailto:") &&
-    !href.startsWith("#") &&
-    !link.hasAttribute("target");
-
-  if (!isInternal) return;
-
-  link.addEventListener("click", (e) => {
-    if (!shell) return;
-    if (!shell.classList.contains("crt-on")) return;
-
-    e.preventDefault();
-    shell.classList.add("page-leave");
-
-    setTimeout(() => {
-      window.location.href = href;
-    }, 280);
-  });
+  runRevealWipe();
 });

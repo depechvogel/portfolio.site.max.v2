@@ -3,252 +3,125 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Max — Projects</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <title>Max Portfolio — Projects</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Pixelify+Sans:wght@400;500;600;700&display=swap" 
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body data-page="projects">
-  <div class="site-shell crt-on" id="shell">
-    <header class="topbar">
-      <div class="brand-group">
-        <a
-          href="https://www.tue.nl/en/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="brand-mark tue"
-        >
-          TUE
-        </a>
+  <div class="desktop" id="desktop">
+    <div class="screen-wipe" id="screenWipe"></div>
 
-        <a class="brand" href="index.html">
-          <div class="brand-text">
-            <span class="brand-name">Max</span>
-            <span class="brand-sub">industrial design portfolio</span>
-          </div>
-        </a>
-      </div>
+    <header class="menu-bar">
+      <a class="system-button" href="index.html">MAX.OS</a>
 
-      <nav class="nav">
+      <nav class="main-nav" id="mainNav">
         <a href="index.html" data-link="home">Home</a>
         <a href="projects.html" data-link="projects">Projects</a>
         <a href="piv.html" data-link="piv">PI&amp;V</a>
         <a href="competence.html" data-link="competence">Competence</a>
       </nav>
 
-      <button class="menu-toggle" aria-label="Open navigation">Menu</button>
-      <button class="crt-toggle" id="crtToggle" type="button">CRT: ON</button>
+      <div class="menu-actions">
+        <button class="fx-toggle" id="fxToggle" type="button">DITHER: ON</button>
+        <button class="mobile-menu" id="mobileMenu" type="button">Menu</button>
+      </div>
     </header>
 
-    <main>
-      <section class="page-hero">
-        <p class="eyebrow">portfolio / selected work</p>
-        <h1 class="page-title">Projects.</h1>
-        <p class="lead narrow">
-          Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.
+    <main class="screen">
+      <section class="page-header">
+        <p class="system-label">/archive/selected_work</p>
+
+        <h1>Projects</h1>
+
+        <p>
+          Project files are loaded from <code>projectData</code> in
+          <code>js/main.js</code>. Replace entries there with final text and image paths.
         </p>
       </section>
 
-      <section class="projects-grid">
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-01.html</p></div>
-          <div class="project-thumb" data-project="project1"></div>
-          <div class="project-body">
-            <p class="panel-label">interactive object</p>
-            <h2>Project 01</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project1">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-02.html</p></div>
-          <div class="project-thumb" data-project="project2"></div>
-          <div class="project-body">
-            <p class="panel-label">design research</p>
-            <h2>Project 02</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project2">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-03.html</p></div>
-          <div class="project-thumb" data-project="project3"></div>
-          <div class="project-body">
-            <p class="panel-label">concept</p>
-            <h2>Project 03</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project3">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-04.html</p></div>
-          <div class="project-thumb" data-project="project4"></div>
-          <div class="project-body">
-            <p class="panel-label">prototype</p>
-            <h2>Project 04</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project4">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-05.html</p></div>
-          <div class="project-thumb" data-project="project5"></div>
-          <div class="project-body">
-            <p class="panel-label">product</p>
-            <h2>Project 05</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project5">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-06.html</p></div>
-          <div class="project-thumb" data-project="project6"></div>
-          <div class="project-body">
-            <p class="panel-label">system</p>
-            <h2>Project 06</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project6">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-07.html</p></div>
-          <div class="project-thumb" data-project="project7"></div>
-          <div class="project-body">
-            <p class="panel-label">interface</p>
-            <h2>Project 07</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project7">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-08.html</p></div>
-          <div class="project-thumb" data-project="project8"></div>
-          <div class="project-body">
-            <p class="panel-label">research</p>
-            <h2>Project 08</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project8">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-09.html</p></div>
-          <div class="project-thumb" data-project="project9"></div>
-          <div class="project-body">
-            <p class="panel-label">installation</p>
-            <h2>Project 09</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project9">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-10.html</p></div>
-          <div class="project-thumb" data-project="project10"></div>
-          <div class="project-body">
-            <p class="panel-label">experiment</p>
-            <h2>Project 10</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project10">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-11.html</p></div>
-          <div class="project-thumb" data-project="project11"></div>
-          <div class="project-body">
-            <p class="panel-label">service</p>
-            <h2>Project 11</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project11">Open project</button>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="window-bar"><span></span><span></span><p>project-12.html</p></div>
-          <div class="project-thumb" data-project="project12"></div>
-          <div class="project-body">
-            <p class="panel-label">material study</p>
-            <h2>Project 12</h2>
-            <p>Short project summary.</p>
-            <button class="button small project-open" type="button" data-project="project12">Open project</button>
-          </div>
-        </article>
-      </section>
+      <section class="projects-grid" id="projectsGrid"></section>
     </main>
 
-    <div class="project-overlay" id="projectOverlay" aria-hidden="true">
-      <div class="project-modal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
-        <div class="window-bar project-modal-bar">
-          <span></span><span></span>
-          <p id="projectModalFile">project-file.html</p>
-          <button class="project-close" id="projectClose" type="button" aria-label="Close project">×</button>
-        </div>
-
-      <div class="project-modal-scroll" id="projectModalScroll">
-        <div class="project-simple-layout">
-
-          <div class="project-simple-left">
-            <button 
-              class="project-modal-thumb" 
-              id="projectModalThumb" 
-              type="button" 
-              aria-label="Next image">
-            </button>
-
-            <div class="project-image-footer">
-              <span id="projectImageCounter">01 / 01</span>
-              <span id="projectImageCaption"></span>
-            </div>
-
-            <div class="project-gallery-strip" id="projectGalleryStrip"></div>
+    <div class="modal-overlay" id="projectOverlay" aria-hidden="true">
+      <article class="window project-modal" role="dialog" aria-modal="true">
+        <div class="window-bar">
+          <div class="window-controls">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
 
-          <div class="project-simple-right">
-            <p class="panel-label" id="projectModalCategory">category</p>
-            <h2 id="projectModalTitle">Project title</h2>
-            <p class="project-modal-lead" id="projectModalLead">Project summary text.</p>
+          <p id="projectModalFile">project-file.txt</p>
 
-            <div class="project-meta-block">
-              <p class="panel-label">overview</p>
+          <button class="close-button" id="projectClose" type="button" aria-label="Close project">
+            ×
+          </button>
+        </div>
+
+        <div class="project-modal-body" id="projectModalBody">
+          <section class="project-image-panel">
+            <button class="main-image-button" id="projectMainImage" type="button">
+              <img src="" alt="" id="projectMainImageTag">
+            </button>
+
+            <div class="image-status">
+              <span id="projectImageCounter">01 / 01</span>
+              <span id="projectImageCaption">caption</span>
+            </div>
+
+            <div class="gallery-strip" id="projectGalleryStrip"></div>
+          </section>
+
+          <section class="project-text-panel">
+            <p class="system-label" id="projectModalCategory">category</p>
+
+            <h2 id="projectModalTitle">Project title</h2>
+
+            <p class="project-lead" id="projectModalLead">
+              Project note.
+            </p>
+
+            <div class="project-section">
+              <h3>Overview</h3>
               <p id="projectModalOverview"></p>
             </div>
 
-            <div class="project-tags" id="projectModalTags"></div>
-          </div>
-
-        </div>
-      </div>
-
-        <div class="project-lightbox" id="projectLightbox" aria-hidden="true">
-          <div class="project-lightbox-top">
-            <button class="lightbox-back" id="lightboxBack" type="button">← Back</button>
-            <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
-          </div>
-
-          <div class="project-lightbox-stage">
-            <button class="lightbox-nav prev" id="lightboxPrev" type="button" aria-label="Previous image">‹</button>
-
-            <div class="lightbox-image-wrap">
-              <img id="lightboxImage" src="" alt="Project image" />
+            <div class="project-section">
+              <h3>Process</h3>
+              <p id="projectModalProcess"></p>
             </div>
 
-            <button class="lightbox-nav next" id="lightboxNext" type="button" aria-label="Next image">›</button>
+            <div class="project-section">
+              <h3>Outcome</h3>
+              <p id="projectModalOutcome"></p>
+            </div>
+
+            <div class="project-tags" id="projectModalTags"></div>
+          </section>
+        </div>
+
+        <div class="lightbox" id="lightbox" aria-hidden="true">
+          <div class="lightbox-top">
+            <button id="lightboxBack" type="button">← Back</button>
+            <span id="lightboxCounter">1 / 1</span>
           </div>
 
-          <div class="project-lightbox-thumbs" id="projectLightboxThumbs"></div>
+          <div class="lightbox-stage">
+            <button id="lightboxPrev" type="button">‹</button>
+            <img src="" alt="" id="lightboxImage">
+            <button id="lightboxNext" type="button">›</button>
+          </div>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 

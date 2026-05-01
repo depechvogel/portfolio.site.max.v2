@@ -3,91 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Max — Competence</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <title>Max Portfolio — Competence</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Pixelify+Sans:wght@400;500;600;700&display=swap" 
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body data-page="competence">
-  <div class="site-shell crt-on" id="shell">
-    <header class="topbar">
-      <div class="brand-group">
-        <a href="https://www.tue.nl/en/" target="_blank" rel="noopener noreferrer" class="brand-mark tue">TUE</a>
-        <a class="brand" href="index.html">
-          <div class="brand-text">
-            <span class="brand-name">Max</span>
-            <span class="brand-sub">industrial design portfolio</span>
-          </div>
-        </a>
-      </div>
 
-      <nav class="nav">
+<body data-page="competence">
+  <div class="desktop" id="desktop">
+    <div class="screen-wipe" id="screenWipe"></div>
+
+    <header class="menu-bar">
+      <a class="system-button" href="index.html">MAX.OS</a>
+
+      <nav class="main-nav" id="mainNav">
         <a href="index.html" data-link="home">Home</a>
         <a href="projects.html" data-link="projects">Projects</a>
         <a href="piv.html" data-link="piv">PI&amp;V</a>
         <a href="competence.html" data-link="competence">Competence</a>
       </nav>
 
-      <button class="menu-toggle" aria-label="Open navigation">Menu</button>
-      <button class="crt-toggle" id="crtToggle" type="button">CRT: ON</button>
+      <div class="menu-actions">
+        <button class="fx-toggle" id="fxToggle" type="button">DITHER: ON</button>
+        <button class="mobile-menu" id="mobileMenu" type="button">Menu</button>
+      </div>
     </header>
 
-    <main>
-      <section class="page-hero">
-        <p class="eyebrow">portfolio / competence</p>
-        <h1 class="page-title">Competence.</h1>
+    <main class="screen">
+      <section class="page-header">
+        <p class="system-label">/reflection/competence</p>
+
+        <h1>Competence</h1>
+
+        <p>
+          Development file. Replace entries below with reflection, learning evidence, and next steps.
+        </p>
       </section>
 
-      <section class="content-grid">
-        <article class="text-card full-span">
-          <p class="panel-label">development</p>
-          <p>
-            Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.
-          </p>
-        </article>
-
-        <article class="text-card">
-          <p class="panel-label">strengths</p>
-          <div class="timeline">
-            <div class="timeline-item">
-              <span>01</span>
-              <div>
-                <strong>Prototyping</strong>
-                <p>Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.</p>
-              </div>
+      <section class="text-grid">
+        <article class="window text-window large">
+          <div class="window-bar">
+            <div class="window-controls">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
+            <p>reflection.txt</p>
+          </div>
 
-            <div class="timeline-item">
-              <span>02</span>
-              <div>
-                <strong>Clarity</strong>
-                <p>Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.</p>
-              </div>
-            </div>
+          <div class="window-content">
+            <p class="system-label">overall growth</p>
+
+            <h2>Development log</h2>
+
+            <p>
+              Write the overall development entry here. Describe what changed in your skills,
+              design process, collaboration, and way of thinking.
+            </p>
+
+            <p>
+              Connect this reflection to project evidence. Focus on concrete shifts rather than
+              general statements.
+            </p>
           </div>
         </article>
 
-        <article class="text-card">
-          <p class="panel-label">growth</p>
-          <div class="timeline">
-            <div class="timeline-item">
-              <span>01</span>
-              <div>
-                <strong>Longer-term framing</strong>
-                <p>Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.</p>
-              </div>
+        <article class="window text-window">
+          <div class="window-bar">
+            <div class="window-controls">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
+            <p>timeline_a.txt</p>
+          </div>
 
-            <div class="timeline-item">
-              <span>02</span>
-              <div>
-                <strong>Reflection</strong>
-                <p>Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.</p>
-              </div>
+          <div class="window-content">
+            <p class="system-label">learning moments</p>
+
+            <h2>Timeline A</h2>
+
+            <ul class="timeline-list">
+              <li>
+                <span>01</span>
+                <div>
+                  <h3>Entry one</h3>
+                  <p>Learning entry. Add a project moment, challenge, or design shift.</p>
+                </div>
+              </li>
+
+              <li>
+                <span>02</span>
+                <div>
+                  <h3>Entry two</h3>
+                  <p>Learning entry. Describe what changed in method, skill, or confidence.</p>
+                </div>
+              </li>
+
+              <li>
+                <span>03</span>
+                <div>
+                  <h3>Entry three</h3>
+                  <p>Learning entry. Link this development to evidence from your archive.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="window text-window">
+          <div class="window-bar">
+            <div class="window-controls">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
+            <p>timeline_b.txt</p>
+          </div>
+
+          <div class="window-content">
+            <p class="system-label">next steps</p>
+
+            <h2>Timeline B</h2>
+
+            <ul class="timeline-list">
+              <li>
+                <span>04</span>
+                <div>
+                  <h3>Next entry</h3>
+                  <p>Direction entry. State an area you want to develop further.</p>
+                </div>
+              </li>
+
+              <li>
+                <span>05</span>
+                <div>
+                  <h3>Next entry</h3>
+                  <p>Direction entry. Describe a skill, context, or method to strengthen.</p>
+                </div>
+              </li>
+
+              <li>
+                <span>06</span>
+                <div>
+                  <h3>Next entry</h3>
+                  <p>Direction entry. Explain where this development should lead next.</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </article>
       </section>

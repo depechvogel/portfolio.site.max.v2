@@ -3,76 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Max — PI&amp;V</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <title>Max Portfolio — PI&amp;V</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Pixelify+Sans:wght@400;500;600;700&display=swap" 
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body data-page="piv">
-  <div class="site-shell crt-on" id="shell">
-    <header class="topbar">
-      <div class="brand-group">
-        <a href="https://www.tue.nl/en/" target="_blank" rel="noopener noreferrer" class="brand-mark tue">TUE</a>
-        <a class="brand" href="index.html">
-          <div class="brand-text">
-            <span class="brand-name">Max</span>
-            <span class="brand-sub">industrial design portfolio</span>
-          </div>
-        </a>
-      </div>
 
-      <nav class="nav">
+<body data-page="piv">
+  <div class="desktop" id="desktop">
+    <div class="screen-wipe" id="screenWipe"></div>
+
+    <header class="menu-bar">
+      <a class="system-button" href="index.html">MAX.OS</a>
+
+      <nav class="main-nav" id="mainNav">
         <a href="index.html" data-link="home">Home</a>
         <a href="projects.html" data-link="projects">Projects</a>
         <a href="piv.html" data-link="piv">PI&amp;V</a>
         <a href="competence.html" data-link="competence">Competence</a>
       </nav>
 
-      <button class="menu-toggle" aria-label="Open navigation">Menu</button>
-      <button class="crt-toggle" id="crtToggle" type="button">CRT: ON</button>
+      <div class="menu-actions">
+        <button class="fx-toggle" id="fxToggle" type="button">DITHER: ON</button>
+        <button class="mobile-menu" id="mobileMenu" type="button">Menu</button>
+      </div>
     </header>
 
-    <main>
-      <section class="page-hero">
-        <p class="eyebrow">portfolio / pi&amp;v</p>
-        <h1 class="page-title">PI&amp;V.</h1>
+    <main class="screen">
+      <section class="page-header">
+        <p class="system-label">/identity/positioning</p>
+
+        <h1>PI&amp;V</h1>
+
+        <p>
+          Positioning, identity, and vision file. Replace entries below with final archive text.
+        </p>
       </section>
 
-      <section class="content-grid">
-        <article class="text-card full-span">
-          <p class="panel-label">who I am</p>
-          <p>
-            Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.
-          </p>
-          <p>
-            Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.
-          </p>
-        </article>
+      <section class="text-grid">
+        <article class="window text-window large">
+          <div class="window-bar">
+            <div class="window-controls">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <p>positioning.txt</p>
+          </div>
 
-        <article class="text-card">
-          <p class="panel-label">direction</p>
-          <h2>What I value</h2>
-          <div class="bullet-grid">
-            <div class="bullet-box">
-              <strong>Clarity</strong>
-              <p>Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.</p>
-            </div>
-            <div class="bullet-box">
-              <strong>Iteration</strong>
-              <p>Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.</p>
-            </div>
+          <div class="window-content">
+            <p class="system-label">core statement</p>
+
+            <h2>Designer position</h2>
+
+            <p>
+              Write the position of the practice here. Describe the role you take as a designer,
+              the type of situations you work with, and the themes that connect your archive.
+            </p>
+
+            <p>
+              Keep this file direct. Explain what you value, what kind of work you make,
+              and why this direction matters within your development.
+            </p>
           </div>
         </article>
 
-        <article class="text-card">
-          <p class="panel-label">position</p>
-          <h2>What I am moving toward</h2>
-          <p>
-            Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.
-          </p>
+        <article class="window text-window">
+          <div class="window-bar">
+            <div class="window-controls">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <p>values.txt</p>
+          </div>
+
+          <div class="window-content">
+            <p class="system-label">values</p>
+
+            <h2>Design values</h2>
+
+            <ul class="pixel-list">
+              <li>
+                <span>01</span>
+                <p>Value entry. State one principle that guides your design decisions.</p>
+              </li>
+
+              <li>
+                <span>02</span>
+                <p>Value entry. Describe how this principle appears in your project work.</p>
+              </li>
+
+              <li>
+                <span>03</span>
+                <p>Value entry. Add a third recurring design attitude or method.</p>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="window text-window">
+          <div class="window-bar">
+            <div class="window-controls">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <p>vision.txt</p>
+          </div>
+
+          <div class="window-content">
+            <p class="system-label">future direction</p>
+
+            <h2>Vision</h2>
+
+            <p>
+              Write the direction of the practice here. Focus on future work, preferred
+              contexts, and the type of designer this archive points toward.
+            </p>
+
+            <p>
+              Connect this direction to current skills, project evidence, and next steps.
+              Keep the file compact and specific.
+            </p>
+          </div>
         </article>
       </section>
     </main>

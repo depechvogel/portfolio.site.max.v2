@@ -3,114 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Max — Portfolio</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <title>Max Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Pixelify+Sans:wght@400;500;600;700&display=swap" 
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body data-page="home">
-  <div class="site-shell crt-on" id="shell">
-    <header class="topbar">
-      <div class="brand-group">
-        <a
-          href="https://www.tue.nl/en/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="brand-mark tue"
-        >
-          TUE
-        </a>
+  <div class="desktop" id="desktop">
+    <div class="screen-wipe" id="screenWipe"></div>
 
-        <a class="brand" href="index.html">
-          <div class="brand-text">
-            <span class="brand-name">Max</span>
-            <span class="brand-sub">industrial design portfolio</span>
-          </div>
-        </a>
-      </div>
+    <header class="menu-bar">
+      <a class="system-button" href="index.html">MAX.OS</a>
 
-      <nav class="nav">
+      <nav class="main-nav" id="mainNav">
         <a href="index.html" data-link="home">Home</a>
         <a href="projects.html" data-link="projects">Projects</a>
         <a href="piv.html" data-link="piv">PI&amp;V</a>
         <a href="competence.html" data-link="competence">Competence</a>
       </nav>
 
-      <button class="menu-toggle" aria-label="Open navigation">Menu</button>
-      <button class="crt-toggle" id="crtToggle" type="button">CRT: ON</button>
+      <div class="menu-actions">
+        <button class="fx-toggle" id="fxToggle" type="button">DITHER: ON</button>
+        <button class="mobile-menu" id="mobileMenu" type="button">Menu</button>
+      </div>
     </header>
 
-    <main>
-      <section class="hero grid-2">
-        <div class="hero-copy">
-          <p class="eyebrow">portfolio / home</p>
+    <main class="screen home-screen">
+      <section class="boot-panel">
+        <p class="system-label">MAX.OS / portfolio disk mounted</p>
 
-          <h1>
-            Max’s<br />
-            Portfolio.
-          </h1>
+        <h1>MAX<br>PORTFOLIO</h1>
 
-          <p class="lead">
-            Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.
-          </p>
+        <p class="intro-text">
+          Replace this with a compact introduction. Keep it direct: your design
+          position, current focus, and what this archive contains.
+        </p>
 
-          <div class="button-row">
-            <a class="button" href="projects.html">Open projects</a>
-            <a class="button button-secondary" href="piv.html">Read PI&amp;V</a>
-          </div>
+        <div class="terminal-lines">
+          <p><span>&gt;</span> loading industrial design archive...</p>
+          <p><span>&gt;</span> selected work / pi&amp;v / competence found</p>
+          <p><span>&gt;</span> choose file to continue</p>
         </div>
+      </section>
 
-        <div class="window-card">
-          <div class="window-bar">
-            <span></span><span></span>
-            <p>overview.html</p>
-          </div>
+      <section class="desktop-file-grid" aria-label="Portfolio navigation">
+        <a href="projects.html" class="desktop-file">
+          <span class="folder-icon"></span>
+          <p>Projects</p>
+        </a>
 
-          <div class="window-content desktop-home">
-            <div class="mini-panel">
-              <p class="panel-label">01</p>
-              <h2>Projects</h2>
-              <p>Placeholder</p>
-            </div>
+        <a href="piv.html" class="desktop-file">
+          <span class="file-icon"></span>
+          <p>PI&amp;V</p>
+        </a>
 
-            <div class="mini-panel">
-              <p class="panel-label">02</p>
-              <h2>PI&amp;V</h2>
-              <p>Placeholder</p>
-            </div>
-
-            <div class="mini-panel">
-              <p class="panel-label">03</p>
-              <h2>Competence</h2>
-              <p>Placeholder</p>
-            </div>
-          </div>
-
-          <div class="window-content mobile-home">
-            <a href="projects.html" class="nav-tile">
-              <span class="panel-label">01</span>
-              <h2>Projects</h2>
-            </a>
-
-            <a href="piv.html" class="nav-tile">
-              <span class="panel-label">02</span>
-              <h2>PI&amp;V</h2>
-            </a>
-
-            <a href="competence.html" class="nav-tile">
-              <span class="panel-label">03</span>
-              <h2>Competence</h2>
-            </a>
-
-            <button class="nav-tile crt-tile" id="crtTile" type="button">
-              <span class="panel-label">04</span>
-              <h2>CRT</h2>
-            </button>
-          </div>
-        </div>
+        <a href="competence.html" class="desktop-file">
+          <span class="file-icon"></span>
+          <p>Competence</p>
+        </a>
       </section>
     </main>
   </div>
