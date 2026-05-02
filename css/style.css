@@ -533,20 +533,41 @@ code {
   overflow: hidden;
 }
 
-.project-thumb-button img,
-.main-image-button img,
-.lightbox-stage img {
+.project-thumb-button img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  image-rendering: pixelated;
   filter: grayscale(1) contrast(1.35) brightness(0.92);
 }
 
-.desktop.dither-on .project-thumb-button img,
+.main-image-button img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: saturate(1.75) contrast(1.12) brightness(0.98);
+  background: transparent;
+  border: none;
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.lightbox-stage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: saturate(1.75) contrast(1.12) brightness(0.98);
+}
+
+.desktop.dither-on .project-thumb-button img {
+  filter: grayscale(1) contrast(1.5) brightness(0.9);
+}
+
 .desktop.dither-on .main-image-button img,
 .desktop.dither-on .lightbox-stage img {
-  filter: grayscale(1) contrast(1.5) brightness(0.9);
+  filter: saturate(1.95) contrast(1.18) brightness(0.96);
 }
 
 .project-card-body {
@@ -617,6 +638,10 @@ code {
   line-height: 1;
 }
 
+.project-modal .close-button {
+  display: none;
+}
+
 .project-modal-body {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
@@ -639,10 +664,21 @@ code {
 
 .main-image-button {
   border: var(--border);
-  background: var(--paper-2);
-  cursor: zoom-in;
-  min-height: 360px;
+  background:
+    radial-gradient(rgba(30, 37, 23, 0.16) 1px, transparent 1px),
+    linear-gradient(rgba(30, 37, 23, 0.05) 50%, transparent 50%),
+    var(--paper-2);
+  background-size:
+    6px 6px,
+    100% 4px,
+    auto;
+  cursor: default;
+  height: clamp(360px, 58vh, 560px);
   overflow: hidden;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .image-status {
@@ -666,29 +702,35 @@ code {
 
 .gallery-thumb {
   aspect-ratio: 1 / 1;
-  border: var(--border-thin);
-  background: var(--paper-2);
+  border: var(--border);
+  background:
+    radial-gradient(rgba(30, 37, 23, 0.16) 1px, transparent 1px),
+    var(--paper-2);
+  background-size: 6px 6px, auto;
   cursor: pointer;
   overflow: hidden;
+  padding: 4px;
 }
 
 .gallery-thumb.active {
   outline: 4px solid var(--ink);
-  outline-offset: -8px;
+  outline-offset: -10px;
 }
 
 .gallery-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  image-rendering: pixelated;
   filter: grayscale(1) contrast(1.35);
+  border: var(--border-thin);
+  background: var(--paper);
 }
 
 .project-text-panel {
   padding: 22px;
   overflow-y: auto;
   background: var(--paper);
+  text-align: justify;
 }
 
 .project-text-panel h2 {
@@ -707,9 +749,9 @@ code {
 }
 
 .project-section {
-  margin-top: 22px;
-  border-top: var(--border-thin);
-  padding-top: 14px;
+  margin: 24px -22px 0;
+  border-top: var(--border);
+  padding: 18px 22px 0;
 }
 
 .project-section h3 {
@@ -1160,4 +1202,151 @@ button,
 
 .fx-toggle {
   display: none !important;
+}
+
+/* FINAL PROJECT MODAL IMAGE LAYOUT OVERRIDE */
+
+.project-image-panel {
+  padding: 14px;
+  border-right: var(--border);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  gap: 12px;
+  min-height: 0;
+  height: 100%;
+}
+
+/* Main image frame fills available vertical space */
+.main-image-button {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  padding: 12px;
+  border: var(--border);
+  background:
+    radial-gradient(rgba(30, 37, 23, 0.16) 1px, transparent 1px),
+    linear-gradient(rgba(30, 37, 23, 0.05) 50%, transparent 50%),
+    var(--paper-2);
+  background-size:
+    6px 6px,
+    100% 4px,
+    auto;
+  cursor: default;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Actual image inside frame */
+.main-image-button img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: saturate(1.75) contrast(1.12) brightness(0.98);
+  background: transparent;
+  border: none;
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+/* Counter/caption row */
+.image-status {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.image-status span:last-child {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+/* Thumbnail strip */
+.gallery-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+/* Thumbnail frame */
+.gallery-thumb {
+  aspect-ratio: 1 / 1;
+  border: var(--border);
+  background:
+    radial-gradient(rgba(30, 37, 23, 0.16) 1px, transparent 1px),
+    var(--paper-2);
+  background-size: 6px 6px, auto;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 4px;
+}
+
+/* Thumbnail image */
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.35);
+  border: var(--border-thin);
+  background: transparent;
+}
+
+/* Active thumbnail */
+.gallery-thumb.active {
+  outline: 4px solid var(--ink);
+  outline-offset: -10px;
+}
+
+/* Make modal body give both columns full height */
+.project-modal-body {
+  min-height: 0;
+  height: 100%;
+}
+
+/* Mobile correction */
+@media (max-width: 820px) {
+  .project-image-panel {
+    border-right: none;
+    border-bottom: var(--border);
+    grid-template-rows: auto auto auto;
+    height: auto;
+  }
+
+  .main-image-button {
+    height: clamp(260px, 46vh, 420px);
+  }
+}
+
+/* FINAL PROJECT THUMBNAIL SIMPLIFICATION */
+
+.gallery-thumb {
+  aspect-ratio: 1 / 1;
+  border: var(--border);
+  background: var(--paper-2);
+  background-image: none;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+}
+
+.gallery-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.35);
+  border: none;
+  background: transparent;
+}
+
+.gallery-thumb.active {
+  outline: 4px solid var(--ink);
+  outline-offset: -8px;
 }
