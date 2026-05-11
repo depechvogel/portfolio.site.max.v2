@@ -49,10 +49,10 @@ const projectData = {
     outcome: "The final outcome was a working interactive prototype that responded to individual users. BOB became more than a technical device; it became an embodied interaction tool that makes stress visible and gives the user a simple action to follow.",
     tags: ["prototype", "interaction", "industrial design", "arduino", "embodied interaction", "stress relief"],
     images: [
-      { src: "assets/images/project1/cover.jpeg", caption: "cover frame" },
-      { src: "assets/images/project1/01.jpg", caption: "context frame" },
-      { src: "assets/images/project1/02.jpeg", caption: "process frame" },
-      { src: "assets/images/project1/03.jpeg", caption: "outcome frame" }
+      { src: "assets/images/project1/cover.jpeg", caption: "final prototype frame" },
+      { src: "assets/images/project1/01.jpg", caption: "components frame" },
+      { src: "assets/images/project1/02.jpeg", caption: "mid-term demo-day frame" },
+      { src: "assets/images/project1/03.jpeg", caption: "team frame" }
     ]
   },
 
@@ -67,10 +67,10 @@ const projectData = {
     outcome: "The final outcome was Hart van Woensel, a community-centred concept built around participation instead of medical treatment. Activities such as shared dinners, cycling, creative sessions and intergenerational events form the main entry points. The concept was received positively by Catharina Hospital, who saw potential in using it as a starting point for future development. For me, this project was a nice introduction to working on something that is not necessarily a product, but rather a concept.",
     tags: ["research", "system", "concept"],
     images: [
-      { src:"assets/images/project2/cover.jpeg", caption: "cover frame" },
-      { src: "assets/images/project2/01.jpeg", caption: "context frame" },
-      { src: "assets/images/project2/02.jpeg", caption: "process frame" },
-      { src: "assets/images/project2/03.jpeg", caption: "outcome frame" }
+      { src: "assets/images/project2/cover.jpeg", caption: "scaled model frame" },
+      { src: "assets/images/project2/01.jpeg", caption: "front page booklet frame" },
+      { src: "assets/images/project2/02.jpeg", caption: "exploratory logo sketch frame" },
+      { src: "assets/images/project2/03.jpeg", caption: "final demo-day display frame" }
     ]
   },
 
@@ -86,9 +86,9 @@ const projectData = {
     tags: ["interaction", "arduino", "prototype", "tactile", "embodied interaction"],
     images: [
       { src: "assets/images/project3/cover.jpeg", caption: "cover frame" },
-      { src: "assets/images/project3/01.jpeg", caption: "context frame" },
-      { src: "assets/images/project3/02.png", caption: "process frame" },
-      { src: "assets/images/project3/03.jpeg", caption: "outcome frame" }
+      { src: "assets/images/project3/01.jpeg", caption: "components context frame" },
+      { src: "assets/images/project3/02.png", caption: "main iterations frame" },
+      { src: "assets/images/project3/03.jpeg", caption: "final prototype frame" }
     ]
   },
 
@@ -103,10 +103,10 @@ const projectData = {
     outcome: "The result was a speculative interaction that explored fairness in a sense. The project showed that equal rules do not automatically create equal experiences. Small design choices, like a counter, a reveal mechanism or an uneven menu, were enough to create pride, jealousy, resistance and discomfort. This project really opened my eyes to speculative design, a practice where exaggeration and making things weird can be very useful.",
     tags: ["speculative design", "interaction", "ritual", "testing", "social behaviour"],
     images: [
-      { src: "assets/images/project4/cover.png", caption: "cover frame" },
-      { src: "assets/images/project4/01.jpeg", caption: "context frame" },
-      { src: "assets/images/project4/02.png", caption: "process frame" },
-      { src: "assets/images/project4/03.jpeg", caption: "outcome frame" }
+      { src: "assets/images/project4/cover.png", caption: "flower mechanism frame" },
+      { src: "assets/images/project4/01.jpeg", caption: "click counter frame" },
+      { src: "assets/images/project4/02.png", caption: "context sketch frame" },
+      { src: "assets/images/project4/03.jpeg", caption: "final dinner frame" }
     ]
   },
 
@@ -121,10 +121,10 @@ const projectData = {
     outcome: "The final result shows two different ways of using creative programming. The first project is more visual and generative. The second is more interactive and responsive. It included game states, collisions, dynamic flames, clouds, stars, a cloud belt, win and death screens. I liked that the second challenge felt a bit like the old Flash games I used to play. Simple, but still fun because the controls gave it personality. This course was a great introduction to a more creative take on coding.",
     tags: ["electronics", "making", "prototype"],
     images: [
-      { src: "assets/images/project5/cover.png", caption: "cover frame" },
-      { src: "assets/images/project5/01.jpg", caption: "context frame" },
-      { src: "assets/images/project5/02.png", caption: "process frame" },
-      { src: "assets/images/project5/03.jpg", caption: "outcome frame" }
+      { src: "assets/images/project5/cover.png", caption: "challenge 2 gameplay frame" },
+      { src: "assets/images/project5/01.jpg", caption: "challenge 2 set-up frame" },
+      { src: "assets/images/project5/02.png", caption: "challenge 1 early idea frame" },
+      { src: "assets/images/project5/03.jpg", caption: "challenge 1 outcome frame" }
     ]
   },
 
@@ -140,9 +140,9 @@ const projectData = {
     tags: ["hybrid game", "teamwork", "prototyping", "education", "design process"],
     images: [
       { src: "assets/images/project6/cover.jpg", caption: "cover frame" },
-      { src: "assets/images/project6/01.jpeg", caption: "context frame" },
-      { src: "assets/images/project6/02.png", caption: "process frame" },
-      { src: "assets/images/project6/03.jpeg", caption: "outcome frame" }
+      { src: "assets/images/project6/01.jpeg", caption: "game context frame" },
+      { src: "assets/images/project6/02.png", caption: "team frame" },
+      { src: "assets/images/project6/03.jpeg", caption: "final prototype frame" }
     ]
   },
 
@@ -161,28 +161,28 @@ const projectData = {
       href: "downloads/app-release-2.apk.zip"
     },
     images: [
-      { src: "assets/images/project7/cover.png", caption: "Workout tracker app interface" },
-      { src: "assets/images/project7/01.jpeg", caption: "Program and workout flow" },
-      { src: "assets/images/project7/02.jpeg", caption: "Testing and refinement process" },
-      { src: "assets/images/project7/03.jpeg", caption: "Android prototype outcome" }
+      { src: "assets/images/project7/cover.png", caption: "cover frame" },
+      { src: "assets/images/project7/01.jpeg", caption: "workout page frame" },
+      { src: "assets/images/project7/02.jpeg", caption: "program page frame" },
+      { src: "assets/images/project7/03.jpeg", caption: "analytics page frame" }
     ]
   },
 
   project8: {
     file: "project_08.txt",
-    category: "material study",
-    title: "Project 08",
-    summary: "Short archive note. State what this project is.",
-    lead: "Project note. Add context, role, and design intention here.",
-    overview: "Overview entry. Describe the assignment, context, and central design question.",
-    process: "Process entry. Describe research, sketches, prototypes, tests, and relevant decisions.",
-    outcome: "Outcome entry. Describe the final result, what changed, and what was learned.",
-    tags: ["material", "experiment", "craft"],
+    category: "data research",
+    title: "Exercise & Sleep Quality Study",
+    summary: "A messy but useful sensor study about exercise and sleep, using Mi Band heart-rate data, ESP32 room measurements, phone audio and daily sleep questionnaires.",
+    lead: "This project was made for Making Sense of Sensors. We wanted to find out whether endurance exercise before sleep had a visible effect on sleep quality. I worked on the exercise structure, helped clean and combine the final data, made early heart-rate and sleep-to-exercise visualisations, worked on the participant plots, and helped write and polish the final report. It was not a clean lab study. It was six people trying to measure real sleep in real bedrooms, with all the mess that comes with that.",
+    overview: "The setup combined several data sources: Mi Band heart-rate data, ESP32 temperature and humidity measurements, smartphone audio recordings and daily Likert-scale questionnaires. Participants followed rest, light exercise and hard exercise days, then measured their sleep overnight. We used RMSSD as a heart-rate variability metric, compared it with training intensity, and also looked at sleep scores, sleep duration, room conditions and restlessness from audio. The interesting part was not only the result, but how fragile the whole data chain became once people, sensors and routines were involved.",
+    process: "A lot of the work was not glamorous. We had to deal with timestamp problems, missing audio files, sensor exports, participant folders, corrupted recordings and data that did not line up neatly. I helped with cleaning, combining and visualising the data so patterns could actually be compared. The project taught me that sensor data does not speak for itself. A graph can look convincing, but without context, cleaning decisions and a clear research question, it can easily become misleading.",
+    outcome: "The final result was inconclusive in a useful way. We did not find a statistically significant relationship between exercise intensity and sleep quality. Some small trends appeared, but they were too inconsistent to claim anything strong. For me, the value of the project was learning how difficult everyday data research actually is. Sleep, exercise, stress, room conditions and human behaviour are all tangled together. This project made evidence-based design feel less abstract, but also made me more critical of easy conclusions.",
+    tags: ["data", "sensors", "research", "sleep", "exercise", "arduino"],
     images: [
-      { src: "assets/images/project8/cover.jpg", caption: "cover frame" },
-      { src: "assets/images/project8/01.jpg", caption: "context frame" },
-      { src: "assets/images/project8/02.jpg", caption: "process frame" },
-      { src: "assets/images/project8/03.jpg", caption: "outcome frame" }
+      { src: "assets/images/project8/cover.jpeg", caption: "mi-band for tracking heart-rate data frame" },
+      { src: "assets/images/project8/01.jpeg", caption: "sensor setup frame" },
+      { src: "assets/images/project8/02.jpeg", caption: "submission size frame" },
+      { src: "assets/images/project8/03.jpg", caption: "analysis and findings frame" }
     ]
   },
 
@@ -343,7 +343,11 @@ function initPageTransitions() {
 function renderProjectsGrid() {
   if (!projectsGrid) return;
 
-  const projectEntries = Object.entries(projectData);
+  const hiddenProjects = ["project9", "project10", "project11", "project12"];
+
+const projectEntries = Object.entries(projectData).filter(([key]) => {
+  return !hiddenProjects.includes(key);
+});
 
   projectsGrid.innerHTML = projectEntries
     .map(([key, project], index) => {
@@ -409,12 +413,29 @@ function openProject(projectKey) {
   projectOverlay.setAttribute("aria-hidden", "false");
 }
 
+function openProjectFromUrl() {
+  if (currentPage !== "projects") return;
+
+  const params = new URLSearchParams(window.location.search);
+  const projectKey = params.get("project");
+
+  if (!projectKey) return;
+  if (!projectData[projectKey]) return;
+
+  openProject(projectKey);
+}
+
 function closeProject() {
   if (!projectOverlay) return;
 
   projectOverlay.classList.remove("open");
   projectOverlay.setAttribute("aria-hidden", "true");
   closeLightbox();
+
+  if (currentPage === "projects") {
+    const cleanUrl = window.location.pathname;
+    window.history.replaceState({}, "", cleanUrl);
+  }
 }
 
 function renderGallery() {
@@ -508,7 +529,9 @@ function updateLightboxImage() {
 function initProjectModal() {
   if (!projectOverlay) return;
 
-  projectClose.addEventListener("click", closeProject);
+  if (projectClose) {
+    projectClose.addEventListener("click", closeProject);
+  }
 
   projectOverlay.addEventListener("click", (event) => {
     if (event.target === projectOverlay) {
@@ -518,9 +541,17 @@ function initProjectModal() {
 
   // Lightbox disabled: project images are shown uncropped in the modal.
 
-  lightboxBack.addEventListener("click", closeLightbox);
-  lightboxPrev.addEventListener("click", () => changeImage(-1));
-  lightboxNext.addEventListener("click", () => changeImage(1));
+  if (lightboxBack) {
+    lightboxBack.addEventListener("click", closeLightbox);
+  }
+
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener("click", () => changeImage(-1));
+  }
+
+  if (lightboxNext) {
+    lightboxNext.addEventListener("click", () => changeImage(1));
+  }
 }
 
 document.addEventListener("keydown", (event) => {
@@ -553,6 +584,7 @@ window.addEventListener("load", () => {
   initPageTransitions();
   renderProjectsGrid();
   initProjectModal();
+  openProjectFromUrl();
 
   if (desktop) {
     desktop.classList.add("page-enter");
@@ -562,4 +594,3 @@ window.addEventListener("load", () => {
     }, 380);
   }
 });
-

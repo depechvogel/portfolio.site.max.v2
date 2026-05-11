@@ -853,6 +853,22 @@ code {
   color: var(--ink-soft);
 }
 
+.text-window a,
+.project-text-panel a {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.text-window a:hover,
+.project-text-panel a:hover {
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+}
+
 .pixel-list,
 .timeline-list {
   list-style: none;
