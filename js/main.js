@@ -34,6 +34,9 @@ const lightboxNext = document.getElementById("lightboxNext");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxCounter = document.getElementById("lightboxCounter");
 
+const profileFileButton = document.getElementById("profileFileButton");
+const profileOverlay = document.getElementById("profileOverlay");
+
 let activeProjectKey = null;
 let activeImageIndex = 0;
 
@@ -345,9 +348,9 @@ function renderProjectsGrid() {
 
   const hiddenProjects = ["project9", "project10", "project11", "project12"];
 
-const projectEntries = Object.entries(projectData).filter(([key]) => {
-  return !hiddenProjects.includes(key);
-});
+  const projectEntries = Object.entries(projectData).filter(([key]) => {
+    return !hiddenProjects.includes(key);
+  });
 
   projectsGrid.innerHTML = projectEntries
     .map(([key, project], index) => {
@@ -554,7 +557,40 @@ function initProjectModal() {
   }
 }
 
+function openProfilePhoto() {
+  if (!profileOverlay) return;
+
+  profileOverlay.classList.add("open");
+  profileOverlay.setAttribute("aria-hidden", "false");
+}
+
+function closeProfilePhoto() {
+  if (!profileOverlay) return;
+
+  profileOverlay.classList.remove("open");
+  profileOverlay.setAttribute("aria-hidden", "true");
+}
+
+function initProfilePhoto() {
+  if (!profileFileButton || !profileOverlay) return;
+
+  profileFileButton.addEventListener("click", openProfilePhoto);
+
+  profileOverlay.addEventListener("click", (event) => {
+    if (event.target === profileOverlay) {
+      closeProfilePhoto();
+    }
+  });
+}
+
 document.addEventListener("keydown", (event) => {
+  const profileOpen = profileOverlay && profileOverlay.classList.contains("open");
+
+  if (profileOpen && event.key === "Escape") {
+    closeProfilePhoto();
+    return;
+  }
+
   const modalOpen = projectOverlay && projectOverlay.classList.contains("open");
   const lightboxOpen = lightbox && lightbox.classList.contains("open");
 
@@ -584,6 +620,7 @@ window.addEventListener("load", () => {
   initPageTransitions();
   renderProjectsGrid();
   initProjectModal();
+  initProfilePhoto();
   openProjectFromUrl();
 
   if (desktop) {

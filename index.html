@@ -33,7 +33,7 @@
         <h1>MAX<br>PORTFOLIO</h1>
 
         <p class="intro-text">
-          Second-year Industrial Design student at TU/e with a hands-on approach to prototyping, interaction and human-centred systems.
+          Second-year Industrial Design student at TU/e focused on hands-on prototyping, physical-digital interaction and human-centred technology in areas like health, movement and accessibility.
         </p>
 
         <div class="terminal-lines">
@@ -43,35 +43,58 @@
         </div>
       </section>
 
-        <section class="desktop-file-grid" aria-label="Portfolio navigation">
-          <a href="projects.html" class="desktop-file grid-projects">
-            <span class="folder-icon" aria-hidden="true"></span>
-            <p>Projects</p>
-          </a>
+      <section class="desktop-file-grid" aria-label="Portfolio navigation">
+        <a href="projects.html" class="desktop-file grid-projects">
+          <span class="folder-icon" aria-hidden="true"></span>
+          <p>Projects</p>
+        </a>
 
-          <a href="piv.html" class="desktop-file grid-piv">
-            <span class="file-icon" aria-hidden="true"></span>
-            <p>PI&amp;V</p>
-          </a>
+        <a href="piv.html" class="desktop-file grid-piv">
+          <span class="file-icon" aria-hidden="true"></span>
+          <p>PI&amp;V</p>
+        </a>
 
-          <a href="competence.html" class="desktop-file grid-competence">
-            <span class="file-icon" aria-hidden="true"></span>
-            <p>Development</p>
-          </a>
+        <a href="competence.html" class="desktop-file grid-competence">
+          <span class="file-icon" aria-hidden="true"></span>
+          <p>Development</p>
+        </a>
 
-          <a href="https://www.linkedin.com/in/max-otten-81474a243" target="_blank" rel="noopener noreferrer" class="desktop-file grid-linkedin">
-            <span class="link-icon" aria-hidden="true"></span>
-            <p>LinkedIn</p>
-          </a>
+        <button class="desktop-file grid-profile" id="profileFileButton" type="button">
+          <span class="photo-icon" aria-hidden="true"></span>
+          <p>portrait.jpeg</p>
+        </button>
 
-          <a href="https://www.tue.nl/en/" target="_blank" rel="noopener noreferrer" class="desktop-file grid-tue">
-            <span class="link-icon" aria-hidden="true"></span>
-            <p>TU/e</p>
-          </a>
-        </section>
+        <a href="https://www.linkedin.com/in/max-otten-81474a243" target="_blank" rel="noopener noreferrer" class="desktop-file grid-linkedin">
+          <span class="link-icon" aria-hidden="true"></span>
+          <p>LinkedIn</p>
+        </a>
 
+        <a href="https://www.tue.nl/studeren/bachelor-college/bachelor-industrial-design/" target="_blank" rel="noopener noreferrer" class="desktop-file grid-tue">
+          <span class="link-icon" aria-hidden="true"></span>
+          <p>TU/e ID</p>
+        </a>
       </section>
     </main>
+
+    <div class="profile-overlay" id="profileOverlay" aria-hidden="true">
+      <article class="window profile-photo-window" role="dialog" aria-modal="true" aria-label="Profile photo">
+        <div class="window-bar profile-photo-bar">
+          <div class="window-controls">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <p>max_profile.jpeg</p>
+        </div>
+
+        <div class="profile-photo-content">
+          <img src="assets/images/profile/max-profile.jpeg" alt="Portrait of Max Otten">
+        </div>
+
+        <p class="profile-photo-caption">profile image / max.otten</p>
+      </article>
+    </div>
   </div>
 
   <script src="js/main.js"></script>
