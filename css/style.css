@@ -848,6 +848,7 @@ code {
   margin-top: 18px;
   color: var(--ink-soft);
   font-weight: 700;
+  display: none
 }
 
 .project-section {
